@@ -1,11 +1,9 @@
 const router = require("express").Router();
-const User = require("../models/user"); // ✅ FIXED PATH
+const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// =======================
 // SIGNUP
-// =======================
 router.post("/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -24,6 +22,7 @@ router.post("/signup", async (req, res) => {
         message: "User already exists",
       });
     }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
@@ -40,7 +39,6 @@ router.post("/signup", async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "User registered successfully",
       token,
       user: {
         id: user._id,
@@ -56,21 +54,13 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// =======================
 // SIGNIN
-// =======================
 router.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
-      return res.status(400).json({
-        success: false,
-        message: "Please fill all fields",
-      });
-    }
-
     const user = await User.findOne({ email });
+
     if (!user) {
       return res.status(400).json({
         success: false,
@@ -79,6 +69,7 @@ router.post("/signin", async (req, res) => {
     }
 
     const match = await bcrypt.compare(password, user.password);
+
     if (!match) {
       return res.status(400).json({
         success: false,
@@ -92,9 +83,8 @@ router.post("/signin", async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    res.status(200).json({
+    res.json({
       success: true,
-      message: "Login successful",
       token,
       user: {
         id: user._id,

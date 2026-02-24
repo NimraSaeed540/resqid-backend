@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const MedicalProfile = require("../models/MedicalProfile"); // ✅ EXACT SAME NAME
+const MedicalProfile = require("../models/MedicalProfile");
 const protect = require("../middleware/authmiddleware");
 
 // CREATE PROFILE
@@ -13,7 +13,6 @@ router.post("/create", protect, async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "Profile saved successfully",
       profile,
     });
   } catch (error) {
@@ -38,7 +37,7 @@ router.get("/myprofile", protect, async (req, res) => {
       });
     }
 
-    res.status(200).json({
+    res.json({
       success: true,
       profile,
     });

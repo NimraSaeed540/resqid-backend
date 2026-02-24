@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
-const MedicalProfileSchema = new mongoose.Schema(
+const medicalProfileSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",   // ✅ Capital U same as model name
+      ref: "User",
       required: true,
     },
     fullName: {
@@ -20,4 +20,4 @@ const MedicalProfileSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("MedicalProfile", MedicalProfileSchema);
+module.exports = mongoose.model("MedicalProfile", medicalProfileSchema);
