@@ -17,4 +17,4 @@ const medicalProfileSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("medicalprofile", medicalProfileSchema);
+module.exports = mongoose.model("MedicalProfile", medicalProfileSchema);

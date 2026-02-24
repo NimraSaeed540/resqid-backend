@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const User = require("../models/user");
+const User = require("./user"); // Correct path to your user model
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -18,7 +18,7 @@ router.post("/signup", async (req, res) => {
       });
     }
 
-    // Check existing user
+    // Check if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({
