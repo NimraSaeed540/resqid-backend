@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const MedicalProfile = require("../models/medicalprofile");
+const medicalprofile = require("../models/medicalprofile");
 const protect = require("../middleware/authmiddleware");
 
 // ==========================
@@ -8,7 +8,7 @@ const protect = require("../middleware/authmiddleware");
 // ==========================
 router.post("/create", protect, async (req, res) => {
   try {
-    const profile = await MedicalProfile.create({
+    const profile = await medicalprofile.create({
       ...req.body,
       user: req.user._id, // logged-in user id
     });
@@ -31,7 +31,7 @@ router.post("/create", protect, async (req, res) => {
 // ==========================
 router.get("/myprofile", protect, async (req, res) => {
   try {
-    const profile = await MedicalProfile.findOne({
+    const profile = await medicalprofile.findOne({
       user: req.user._id,
     });
 

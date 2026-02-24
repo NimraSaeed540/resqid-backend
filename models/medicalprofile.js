@@ -4,7 +4,7 @@ const medicalProfileSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "user",
       required: true,
     },
     fullName: String,
@@ -17,4 +17,4 @@ const medicalProfileSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("MedicalProfile", medicalProfileSchema);
+module.exports = mongoose.model("medicalprofile", medicalProfileSchema);
