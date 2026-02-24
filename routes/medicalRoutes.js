@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const MedicalProfile = require("../models/MedicalProfile");
+const MedicalProfile = require("../models/medicalprofile");
 const protect = require("../middleware/authmiddleware");
 
 // ==========================
