@@ -12,13 +12,13 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected Successfully"))
   .catch((err) => console.log("Mongo Error:", err));
 
-const authRoutes = require("../routes/auth");
-const medicalRoutes = require("../routes/medicalRoutes");
+const authRoutes = require("./routes/auth");
+const medicalRoutes = require("./routes/medicalRoutes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/medical", medicalRoutes);
 
-const summaryRoutes = require("../routes/summaryRoutes");
+const summaryRoutes = require("./routes/summaryRoutes");
 app.use("/api/summary", summaryRoutes);
 
 app.get("/", (req, res) => {

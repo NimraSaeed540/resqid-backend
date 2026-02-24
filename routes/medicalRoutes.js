@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const MedicalProfile = require("./models/medicalprofile");
+const MedicalProfile = require("./medicalprofile"); // Correct path to your medicalprofile model
 const protect = require("../middleware/authmiddleware");
 
 // ==============================
