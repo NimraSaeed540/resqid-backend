@@ -4,10 +4,13 @@ const medicalProfileSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",   // ✅ Capital U same as model name
       required: true,
     },
-    fullName: String,
+    fullName: {
+      type: String,
+      required: true,
+    },
     age: Number,
     bloodGroup: String,
     disease: String,

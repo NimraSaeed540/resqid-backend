@@ -1,16 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const MedicalProfile = require("./medicalprofile"); // Correct path to your medicalprofile model
+const MedicalProfile = require("../models/medicalProfile"); // ✅ EXACT SAME NAME
 const protect = require("../middleware/authmiddleware");
 
-// ==============================
-// 🔐 CREATE PROFILE (Protected)
-// ==============================
+// CREATE PROFILE
 router.post("/create", protect, async (req, res) => {
   try {
     const profile = await MedicalProfile.create({
       ...req.body,
-      user: req.user._id, // logged in user id
+      user: req.user._id,
     });
 
     res.status(201).json({
@@ -26,9 +24,7 @@ router.post("/create", protect, async (req, res) => {
   }
 });
 
-// ==============================
-// 🔐 GET MY PROFILE (Protected)
-// ==============================
+// GET MY PROFILE
 router.get("/myprofile", protect, async (req, res) => {
   try {
     const profile = await MedicalProfile.findOne({
