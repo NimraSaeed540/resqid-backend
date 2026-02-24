@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const MedicalProfile = require("../models/medicalProfile"); // ✅ EXACT SAME NAME
+const MedicalProfile = require("../models/MedicalProfile"); // ✅ EXACT SAME NAME
 const protect = require("../middleware/authmiddleware");
 
 // CREATE PROFILE

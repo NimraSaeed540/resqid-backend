@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const medicalProfileSchema = new mongoose.Schema(
+const MedicalProfileSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -20,4 +20,4 @@ const medicalProfileSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("MedicalProfile", medicalProfileSchema);
+module.exports = mongoose.model("MedicalProfile", MedicalProfileSchema);
