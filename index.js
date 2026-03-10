@@ -12,7 +12,9 @@ app.use(express.json());
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/medical", require("./routes/medicalRoutes"));
-app.use("/api/summary", require("./routes/summaryRoutes"));
+app.use("/api/profile", require("./routes/profile"));
+app.use("api/detailedinformation", require("./routes/detailedinformation"));
+app.use("/uploads", express.static("uploads"));
 
 mongoose
   .connect(process.env.MONGO_URI)
